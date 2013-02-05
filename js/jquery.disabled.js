@@ -76,13 +76,14 @@
   $.disabled.off = function(configs) {
     configs = $.extend(this.defaults, configs);
 
-    var $disabled = $('#'+configs.id),
-        selectboxes = $.data($disabled.get(0), 'selectboxes');
+    var $disabled = $('#'+configs.id);
+    if ($disabled.length == 1) {
+      var selectboxes = $.data($disabled.get(0), 'selectboxes');
 
-    $.each(selectboxes, function(){
-      this.css('visibility', '');
-    });
-
+      $.each(selectboxes, function(){
+        this.css('visibility', '');
+      });
+    }
     $disabled.remove();
   };
 })(jQuery);
